@@ -62,12 +62,12 @@ export default {
       active: markActive(schema.marks.strong),
       run: toggleMark(schema.marks.strong)
     },
-    code: {
-      title: 'Toggle code',
-      content: icons.code,
-      active: markActive(schema.marks.code),
-      run: toggleMark(schema.marks.code)
-    },
+    // code: {
+    //   title: 'Toggle code',
+    //   content: icons.code,
+    //   active: markActive(schema.marks.code),
+    //   run: toggleMark(schema.marks.code)
+    // },
     subscript: {
       title: 'Toggle subscript',
       content: icons.subscript,
@@ -119,13 +119,13 @@ export default {
       enable: setBlockType(schema.nodes.paragraph),
       run: setBlockType(schema.nodes.paragraph)
     },
-    code_block: {
-      title: 'Change to code block',
-      content: icons.code_block,
-      active: blockActive(schema.nodes.code_block),
-      enable: setBlockType(schema.nodes.code_block),
-      run: setBlockType(schema.nodes.code_block)
-    },
+    // code_block: {
+    //   title: 'Change to code block',
+    //   content: icons.code_block,
+    //   active: blockActive(schema.nodes.code_block),
+    //   enable: setBlockType(schema.nodes.code_block),
+    //   run: setBlockType(schema.nodes.code_block)
+    // },
     h1: {
       title: 'Change to heading level 1',
       content: icons.heading,

@@ -733,12 +733,12 @@ exports.default = {
       active: markActive(_schema2.default.marks.strong),
       run: (0, _prosemirrorCommands.toggleMark)(_schema2.default.marks.strong)
     },
-    code: {
-      title: 'Toggle code',
-      content: _icons2.default.code,
-      active: markActive(_schema2.default.marks.code),
-      run: (0, _prosemirrorCommands.toggleMark)(_schema2.default.marks.code)
-    },
+    // code: {
+    //   title: 'Toggle code',
+    //   content: icons.code,
+    //   active: markActive(schema.marks.code),
+    //   run: toggleMark(schema.marks.code)
+    // },
     subscript: {
       title: 'Toggle subscript',
       content: _icons2.default.subscript,
@@ -792,13 +792,13 @@ exports.default = {
       enable: (0, _prosemirrorCommands.setBlockType)(_schema2.default.nodes.paragraph),
       run: (0, _prosemirrorCommands.setBlockType)(_schema2.default.nodes.paragraph)
     },
-    code_block: {
-      title: 'Change to code block',
-      content: _icons2.default.code_block,
-      active: blockActive(_schema2.default.nodes.code_block),
-      enable: (0, _prosemirrorCommands.setBlockType)(_schema2.default.nodes.code_block),
-      run: (0, _prosemirrorCommands.setBlockType)(_schema2.default.nodes.code_block)
-    },
+    // code_block: {
+    //   title: 'Change to code block',
+    //   content: icons.code_block,
+    //   active: blockActive(schema.nodes.code_block),
+    //   enable: setBlockType(schema.nodes.code_block),
+    //   run: setBlockType(schema.nodes.code_block)
+    // },
     h1: {
       title: 'Change to heading level 1',
       content: _icons2.default.heading,
