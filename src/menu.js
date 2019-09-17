@@ -179,12 +179,17 @@ export default {
       title: 'Insert image',
       content: icons.image,
       enable: canInsert(schema.nodes.image),
-      run: (state, dispatch) => {
-        const src = promptForURL()
-        if (!src) return false
+      // run: (state, dispatch) => {
+      //   const src = promptForURL()
+      //   if (!src) return false
 
-        const img = schema.nodes.image.createAndFill({ src })
-        dispatch(state.tr.replaceSelectionWith(img))
+      //   const img = schema.nodes.image.createAndFill({ src })
+      //   dispatch(state.tr.replaceSelectionWith(img))
+      // }
+      run: (state, dispatch) => {
+        console.log(state);
+        console.log(dispatch);
+        console.log('hello prosemirror!');
       }
     },
     footnote: {
