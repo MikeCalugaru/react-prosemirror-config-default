@@ -1,6 +1,6 @@
 ProseMirror configuration adapted from `prosemirror-schema-basic` and `prosemirror-menu`.
 
-This is a modified version of the `react-prosemirror-config-default` npm module taken from [@aeaton/react-prosemirror-config-default](https://www.npmjs.com/package/@aeaton/react-prosemirror-config-default).
+This is a modified version of the `react-prosemirror-config-default` module taken from [@aeaton/react-prosemirror-config-default](https://www.npmjs.com/package/@aeaton/react-prosemirror-config-default).
 The main change is associated with image upload menu button. The function was modified to upload image(s) from local drive rather then internet.
 
 ## Installation
