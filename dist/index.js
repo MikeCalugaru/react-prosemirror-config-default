@@ -719,6 +719,19 @@ var promptForURL = function promptForURL() {
   return url;
 };
 
+function uploadFile(file) {
+  var reader = new FileReader();
+  return new Promise(function (accept, fail) {
+    reader.onload = function () {
+      return accept(reader.result);
+    };
+    reader.onerror = function () {
+      return fail(reader.error);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 exports.default = {
   marks: {
     em: {
@@ -853,11 +866,16 @@ exports.default = {
       content: _icons2.default.image,
       enable: canInsert(_schema2.default.nodes.image),
       run: function run(state, dispatch) {
-        var src = promptForURL();
-        if (!src) return false;
-
-        var img = _schema2.default.nodes.image.createAndFill({ src: src });
-        dispatch(state.tr.replaceSelectionWith(img));
+        document.querySelector("#image-upload").addEventListener("change", function (e) {
+          if (state.selection.$from.parent.inlineContent && e.target.files.length) {
+            uploadFile(e.target.files[0]).then(function (url) {
+              var img = _schema2.default.nodes.image.create({ src: url });
+              dispatch(state.tr.replaceSelectionWith(img));
+            }, function () {
+              return false;
+            });
+          }
+        });
       }
     },
     footnote: {
@@ -1061,6 +1079,16 @@ var _fontawesomeFreeSolid = __webpack_require__(18);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var UploadImageWrapper = function UploadImageWrapper(_ref) {
+  var icon = _ref.icon;
+  return _react2.default.createElement(
+    'div',
+    { id: 'upload_image_container' },
+    _react2.default.createElement(_reactFontawesome2.default, { icon: icon, id: 'upload_icon_button' }),
+    _react2.default.createElement('input', { id: 'image-upload', type: 'file', name: 'upload' })
+  );
+};
+
 exports.default = {
   em: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faItalic }),
   italic: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faItalic }),
@@ -1078,7 +1106,7 @@ exports.default = {
   code_block: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faCode }),
   ordered_list: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faListOl }),
   bullet_list: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faListUl }),
-  image: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faImage }),
+  image: _react2.default.createElement(UploadImageWrapper, { icon: _fontawesomeFreeSolid.faImage }),
   table: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faTable }),
   footnote: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faAsterisk }),
   undo: _react2.default.createElement(_reactFontawesome2.default, { icon: _fontawesomeFreeSolid.faUndo }),

@@ -48,6 +48,15 @@ const promptForURL = () => {
   return url
 }
 
+function uploadFile(file) {
+  let reader = new FileReader
+  return new Promise((accept, fail) => {
+    reader.onload = () => accept(reader.result)
+    reader.onerror = () => fail(reader.error)
+    reader.readAsDataURL(file)
+  })
+}
+
 export default {
   marks: {
     em: {
@@ -179,17 +188,17 @@ export default {
       title: 'Insert image',
       content: icons.image,
       enable: canInsert(schema.nodes.image),
-      // run: (state, dispatch) => {
-      //   const src = promptForURL()
-      //   if (!src) return false
-
-      //   const img = schema.nodes.image.createAndFill({ src })
-      //   dispatch(state.tr.replaceSelectionWith(img))
-      // }
       run: (state, dispatch) => {
-        console.log(state);
-        console.log(dispatch);
-        console.log('hello prosemirror!');
+        document.querySelector("#image-upload").addEventListener("change", e => {
+          if (state.selection.$from.parent.inlineContent && e.target.files.length) {
+            uploadFile(e.target.files[0]).then(url => {
+              const img = schema.nodes.image.create({ src: url });
+              dispatch(state.tr.replaceSelectionWith(img));
+            }, () => {
+              return false;
+            })
+          }
+        });
       }
     },
     footnote: {

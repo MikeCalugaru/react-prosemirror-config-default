@@ -23,6 +23,13 @@ import {
   faAngleUp
 } from '@fortawesome/fontawesome-free-solid'
 
+const UploadImageWrapper = ({ icon }) => (
+  <div id='upload_image_container' >
+    <FontAwesomeIcon icon={icon} id='upload_icon_button' />
+    <input id='image-upload' type="file" name="upload" />
+  </div>
+);
+
 export default {
   em: <FontAwesomeIcon icon={faItalic} />,
   italic: <FontAwesomeIcon icon={faItalic} />,
@@ -40,7 +47,7 @@ export default {
   code_block: <FontAwesomeIcon icon={faCode} />,
   ordered_list: <FontAwesomeIcon icon={faListOl} />,
   bullet_list: <FontAwesomeIcon icon={faListUl} />,
-  image: <FontAwesomeIcon icon={faImage} />,
+  image: <UploadImageWrapper icon={faImage} />,
   table: <FontAwesomeIcon icon={faTable} />,
   footnote: <FontAwesomeIcon icon={faAsterisk} />,
   undo: <FontAwesomeIcon icon={faUndo} />,
